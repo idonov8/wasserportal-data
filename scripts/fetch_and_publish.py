@@ -89,10 +89,18 @@ def fetch_station(station_id: str):
     resp.raise_for_status()
     text = resp.text
 
-    # detect delimiter using the first non-empty line
-    lines = [ln for ln in text.splitlines() if ln.strip() != ""]
-    if not lines:
+    # detect delimiter using the first non-empty line and skip metadata lines
+    lines_all = [ln for ln in text.splitlines() if ln.strip() != ""]
+    if not lines_all:
         return []
+    # find the header row containing typical column names (e.g., Datum, Wert)
+    header_start_index = 0
+    for i, ln in enumerate(lines_all):
+        ln_lower = ln.lower()
+        if ("datum" in ln_lower) and ("wert" in ln_lower or "messwert" in ln_lower):
+            header_start_index = i
+            break
+    lines = lines_all[header_start_index:]
     delim = detect_delimiter(lines[0])
     reader = csv.DictReader(lines, delimiter=delim)
     header = reader.fieldnames or []
