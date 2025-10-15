@@ -24,4 +24,5 @@ This ensures that the JSON output always reflects the latest available measureme
 
 The generated JSON files are publicly available through GitHub Pages at:  
 👉 https://idonov.com/wasserportal-data/stations/130.json
+
 👉 https://idonov.com/wasserportal-data/stations/140.json
