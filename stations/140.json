@@ -1,7 +1,7 @@
 {
   "station": "140",
-  "fetched_at": "2026-02-18T02:26:15.919537Z",
-  "count": 1535,
+  "fetched_at": "2026-02-19T02:25:30.200568Z",
+  "count": 1536,
   "data": [
     {
       "time": "1975-01-02T00:00:00",
@@ -26089,6 +26089,23 @@
         "Messstelle": "Spree - Jannowitzbr�cke",
         "Messstellennummer": "140",
         "Datum": "06.01.2026",
+        "Parameter": "Wassertemperatur",
+        "Entnahmetiefe [m]": ",50",
+        "Messmethode": "DIN 38404 (C4)",
+        "Vorzeichen": "",
+        "Wert": "0,9000",
+        "Einheit": "�C",
+        "Bestimmungsgrenze": ""
+      }
+    },
+    {
+      "time": "2026-02-02T00:00:00",
+      "value": 0.9,
+      "raw_value": "0,9000",
+      "raw_row": {
+        "Messstelle": "Spree - Jannowitzbr�cke",
+        "Messstellennummer": "140",
+        "Datum": "02.02.2026",
         "Parameter": "Wassertemperatur",
         "Entnahmetiefe [m]": ",50",
         "Messmethode": "DIN 38404 (C4)",
