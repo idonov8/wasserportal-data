@@ -1,7 +1,7 @@
 {
   "station": "130",
-  "fetched_at": "2026-03-18T02:27:34.065666Z",
-  "count": 1083,
+  "fetched_at": "2026-03-19T02:28:27.852059Z",
+  "count": 1084,
   "data": [
     {
       "time": "1975-01-06T00:00:00",
@@ -18410,6 +18410,23 @@
         "Messmethode": "DIN 38404 (C4)",
         "Vorzeichen": "",
         "Wert": "1,5000",
+        "Einheit": "�C",
+        "Bestimmungsgrenze": ""
+      }
+    },
+    {
+      "time": "2026-03-03T00:00:00",
+      "value": 5.1,
+      "raw_value": "5,1000",
+      "raw_row": {
+        "Messstelle": "Spree - F�hre Baumschulenweg",
+        "Messstellennummer": "130",
+        "Datum": "03.03.2026",
+        "Parameter": "Wassertemperatur",
+        "Entnahmetiefe [m]": ",50",
+        "Messmethode": "DIN 38404 (C4)",
+        "Vorzeichen": "",
+        "Wert": "5,1000",
         "Einheit": "�C",
         "Bestimmungsgrenze": ""
       }
