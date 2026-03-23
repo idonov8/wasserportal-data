@@ -3,6 +3,7 @@
 import requests
 import csv
 import os
+import re
 from datetime import datetime
 from dateutil import parser as dateparser
 
@@ -15,6 +16,52 @@ STATIONS = [
 ]
 
 BASE_URL = "https://wasserportal.berlin.de/station.php?anzeige=d&station={station}&thema=opq&nstoffid=448&nstoffid2=0"
+STATION_INFO_URL = "https://wasserportal.berlin.de/station.php?anzeige=m&thema=opq&station={station}"
+
+# Map German labels to English field names
+METADATA_FIELDS = {
+    "name": "name",
+    "gewässer": "water_body",
+    "betreiber": "operator",
+    "ausprägung": "type",
+    "flusskilometer": "river_km",
+    "rechtswert (utm 33 n)": "utm_easting",
+    "hochwert (utm 33 n)": "utm_northing",
+}
+
+
+def fetch_station_metadata(station_id: str):
+    """Scrape station metadata from the Wasserportal station info page."""
+    url = STATION_INFO_URL.format(station=station_id)
+    headers = {
+        "User-Agent": "github-actions-fetcher/1.0",
+    }
+    resp = requests.get(url, headers=headers, timeout=30)
+    resp.raise_for_status()
+    html = resp.text
+
+    metadata = {"id": station_id}
+
+    # Extract table rows: <td>Label</td><td>Value</td>
+    row_pattern = re.compile(
+        r"<td[^>]*>\s*(.*?)\s*</td>\s*<td[^>]*>\s*(.*?)\s*</td>",
+        re.IGNORECASE | re.DOTALL,
+    )
+    for match in row_pattern.finditer(html):
+        label = re.sub(r"<[^>]+>", "", match.group(1)).strip().lower()
+        value = re.sub(r"<[^>]+>", "", match.group(2)).strip()
+        if label in METADATA_FIELDS:
+            field_name = METADATA_FIELDS[label]
+            # Convert numeric fields
+            if field_name in ("river_km", "utm_easting", "utm_northing"):
+                try:
+                    value = float(value)
+                except ValueError:
+                    pass
+            metadata[field_name] = value
+
+    return metadata
+
 
 def detect_delimiter(first_line: str):
     # prefer semicolon if present (common in German CSVs)
@@ -130,6 +177,15 @@ def main():
     index = {"generated": datetime.utcnow().isoformat() + "Z", "stations": []}
     for s in STATIONS:
         print(f"Fetching station {s['id']}...")
+
+        # Fetch station metadata (name, water body, coordinates, etc.)
+        try:
+            metadata = fetch_station_metadata(s["id"])
+            print(f"  Found metadata: {metadata.get('name', 'unknown')}")
+        except Exception as e:
+            print(f"  Warning: could not fetch metadata for station {s['id']}: {e}")
+            metadata = {"id": s["id"]}
+
         try:
             data = fetch_station(s["id"])
         except Exception as e:
@@ -137,6 +193,7 @@ def main():
             data = []
         out_obj = {
             "station": s["id"],
+            **{k: v for k, v in metadata.items() if k != "id"},
             "fetched_at": datetime.utcnow().isoformat() + "Z",
             "count": len(data),
             "data": data,
@@ -147,6 +204,7 @@ def main():
             json.dump(out_obj, f, ensure_ascii=False, indent=2)
         index["stations"].append({
             "id": s["id"],
+            **{k: v for k, v in metadata.items() if k != "id"},
             "url": f"./{s['filename']}",
             "count": len(data)
         })
