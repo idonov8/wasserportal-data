@@ -42,9 +42,9 @@ def fetch_station_metadata(station_id: str):
 
     metadata = {"id": station_id}
 
-    # Extract table rows: <td>Label</td><td>Value</td>
+    # Extract table rows: <th>Label</th><td>Value</td>
     row_pattern = re.compile(
-        r"<td[^>]*>\s*(.*?)\s*</td>\s*<td[^>]*>\s*(.*?)\s*</td>",
+        r"<th[^>]*>\s*(.*?)\s*</th>\s*<td[^>]*>\s*(.*?)\s*</td>",
         re.IGNORECASE | re.DOTALL,
     )
     for match in row_pattern.finditer(html):
