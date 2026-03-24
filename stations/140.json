@@ -1,6 +1,13 @@
 {
   "station": "140",
-  "fetched_at": "2026-03-24T02:21:54.830605Z",
+  "name": "Spree - Jannowitzbrücke",
+  "water_body": "Spree",
+  "operator": "Land Berlin",
+  "type": "Probenahme",
+  "river_km": 18.39,
+  "utm_easting": 392684.19,
+  "utm_northing": 5819395.72,
+  "fetched_at": "2026-03-24T16:13:34.662350Z",
   "count": 1537,
   "data": [
     {

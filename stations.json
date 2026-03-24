@@ -1,13 +1,27 @@
 {
-  "generated": "2026-03-24T02:21:53.823888Z",
+  "generated": "2026-03-24T16:13:32.233113Z",
   "stations": [
     {
       "id": "140",
+      "name": "Spree - Jannowitzbrücke",
+      "water_body": "Spree",
+      "operator": "Land Berlin",
+      "type": "Probenahme",
+      "river_km": 18.39,
+      "utm_easting": 392684.19,
+      "utm_northing": 5819395.72,
       "url": "./140.json",
       "count": 1537
     },
     {
       "id": "130",
+      "name": "Spree - Fähre Baumschulenweg",
+      "water_body": "Spree",
+      "operator": "Land Berlin",
+      "type": "Probenahme",
+      "river_km": 26.02,
+      "utm_easting": 397833.26,
+      "utm_northing": 5814723.53,
       "url": "./130.json",
       "count": 1084
     }
