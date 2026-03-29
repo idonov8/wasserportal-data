@@ -121,12 +121,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Wassertemperatur')].time",
+              "jsonPath": "$.by_parameter['Wassertemperatur'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Wassertemperatur')].value",
+              "jsonPath": "$.by_parameter['Wassertemperatur'][*].value",
               "type": "number"
             }
           ],
@@ -174,12 +174,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='pH-Wert')].time",
+              "jsonPath": "$.by_parameter['pH-Wert'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='pH-Wert')].value",
+              "jsonPath": "$.by_parameter['pH-Wert'][*].value",
               "type": "number"
             }
           ],
@@ -227,12 +227,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Sauerstoff-Gehalt')].time",
+              "jsonPath": "$.by_parameter['Sauerstoff-Gehalt'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Sauerstoff-Gehalt')].value",
+              "jsonPath": "$.by_parameter['Sauerstoff-Gehalt'][*].value",
               "type": "number"
             }
           ],
@@ -280,12 +280,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Leitfähigkeit')].time",
+              "jsonPath": "$.by_parameter['Leitfähigkeit'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Leitfähigkeit')].value",
+              "jsonPath": "$.by_parameter['Leitfähigkeit'][*].value",
               "type": "number"
             }
           ],
@@ -345,12 +345,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Nitrat-Stickstoff')].time",
+              "jsonPath": "$.by_parameter['Nitrat-Stickstoff'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Nitrat-Stickstoff')].value",
+              "jsonPath": "$.by_parameter['Nitrat-Stickstoff'][*].value",
               "type": "number"
             }
           ],
@@ -398,12 +398,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Nitrit-Stickstoff')].time",
+              "jsonPath": "$.by_parameter['Nitrit-Stickstoff'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Nitrit-Stickstoff')].value",
+              "jsonPath": "$.by_parameter['Nitrit-Stickstoff'][*].value",
               "type": "number"
             }
           ],
@@ -451,12 +451,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Ammonium-Stickstoff')].time",
+              "jsonPath": "$.by_parameter['Ammonium-Stickstoff'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Ammonium-Stickstoff')].value",
+              "jsonPath": "$.by_parameter['Ammonium-Stickstoff'][*].value",
               "type": "number"
             }
           ],
@@ -504,12 +504,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Gesamt-Phosphor (P) gesamt')].time",
+              "jsonPath": "$.by_parameter['Gesamt-Phosphor (P) gesamt'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Gesamt-Phosphor (P) gesamt')].value",
+              "jsonPath": "$.by_parameter['Gesamt-Phosphor (P) gesamt'][*].value",
               "type": "number"
             }
           ],
@@ -569,12 +569,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Chlorid')].time",
+              "jsonPath": "$.by_parameter['Chlorid'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Chlorid')].value",
+              "jsonPath": "$.by_parameter['Chlorid'][*].value",
               "type": "number"
             }
           ],
@@ -622,12 +622,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Sulfat')].time",
+              "jsonPath": "$.by_parameter['Sulfat'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Sulfat')].value",
+              "jsonPath": "$.by_parameter['Sulfat'][*].value",
               "type": "number"
             }
           ],
@@ -675,12 +675,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Calcium')].time",
+              "jsonPath": "$.by_parameter['Calcium'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Calcium')].value",
+              "jsonPath": "$.by_parameter['Calcium'][*].value",
               "type": "number"
             }
           ],
@@ -728,12 +728,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Natrium')].time",
+              "jsonPath": "$.by_parameter['Natrium'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Natrium')].value",
+              "jsonPath": "$.by_parameter['Natrium'][*].value",
               "type": "number"
             }
           ],
@@ -793,12 +793,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Blei gesamt')].time",
+              "jsonPath": "$.by_parameter['Blei gesamt'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Blei gesamt')].value",
+              "jsonPath": "$.by_parameter['Blei gesamt'][*].value",
               "type": "number"
             }
           ],
@@ -846,12 +846,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Cadmium gesamt')].time",
+              "jsonPath": "$.by_parameter['Cadmium gesamt'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Cadmium gesamt')].value",
+              "jsonPath": "$.by_parameter['Cadmium gesamt'][*].value",
               "type": "number"
             }
           ],
@@ -899,12 +899,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Kupfer gesamt')].time",
+              "jsonPath": "$.by_parameter['Kupfer gesamt'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Kupfer gesamt')].value",
+              "jsonPath": "$.by_parameter['Kupfer gesamt'][*].value",
               "type": "number"
             }
           ],
@@ -952,12 +952,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Zink gesamt')].time",
+              "jsonPath": "$.by_parameter['Zink gesamt'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Zink gesamt')].value",
+              "jsonPath": "$.by_parameter['Zink gesamt'][*].value",
               "type": "number"
             }
           ],
@@ -1017,12 +1017,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='DOC (Gelöster organischer Kohlenstoff)')].time",
+              "jsonPath": "$.by_parameter['DOC (Gelöster organischer Kohlenstoff)'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='DOC (Gelöster organischer Kohlenstoff)')].value",
+              "jsonPath": "$.by_parameter['DOC (Gelöster organischer Kohlenstoff)'][*].value",
               "type": "number"
             }
           ],
@@ -1070,12 +1070,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='BSB5 (Biochem. Sauerstoffbedarf, 5d)')].time",
+              "jsonPath": "$.by_parameter['BSB5 (Biochem. Sauerstoffbedarf, 5d)'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='BSB5 (Biochem. Sauerstoffbedarf, 5d)')].value",
+              "jsonPath": "$.by_parameter['BSB5 (Biochem. Sauerstoffbedarf, 5d)'][*].value",
               "type": "number"
             }
           ],
@@ -1123,12 +1123,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='CSB (Chem. Sauerstoffbedarf)')].time",
+              "jsonPath": "$.by_parameter['CSB (Chem. Sauerstoffbedarf)'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='CSB (Chem. Sauerstoffbedarf)')].value",
+              "jsonPath": "$.by_parameter['CSB (Chem. Sauerstoffbedarf)'][*].value",
               "type": "number"
             }
           ],
@@ -1176,12 +1176,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='E.Coli')].time",
+              "jsonPath": "$.by_parameter['E.Coli'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='E.Coli')].value",
+              "jsonPath": "$.by_parameter['E.Coli'][*].value",
               "type": "number"
             }
           ],
@@ -1241,12 +1241,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Benzo[a]pyren')].time",
+              "jsonPath": "$.by_parameter['Benzo[a]pyren'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Benzo[a]pyren')].value",
+              "jsonPath": "$.by_parameter['Benzo[a]pyren'][*].value",
               "type": "number"
             }
           ],
@@ -1294,12 +1294,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Fluoranthen')].time",
+              "jsonPath": "$.by_parameter['Fluoranthen'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Fluoranthen')].value",
+              "jsonPath": "$.by_parameter['Fluoranthen'][*].value",
               "type": "number"
             }
           ],
@@ -1347,12 +1347,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Naphthalin')].time",
+              "jsonPath": "$.by_parameter['Naphthalin'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Naphthalin')].value",
+              "jsonPath": "$.by_parameter['Naphthalin'][*].value",
               "type": "number"
             }
           ],
@@ -1400,12 +1400,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='Pyren')].time",
+              "jsonPath": "$.by_parameter['Pyren'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='Pyren')].value",
+              "jsonPath": "$.by_parameter['Pyren'][*].value",
               "type": "number"
             }
           ],
@@ -1465,12 +1465,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='PFOA (Perfluoroctansäure)')].time",
+              "jsonPath": "$.by_parameter['PFOA (Perfluoroctansäure)'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='PFOA (Perfluoroctansäure)')].value",
+              "jsonPath": "$.by_parameter['PFOA (Perfluoroctansäure)'][*].value",
               "type": "number"
             }
           ],
@@ -1518,12 +1518,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='PFOS (Perfluoroctansulfonsäure)')].time",
+              "jsonPath": "$.by_parameter['PFOS (Perfluoroctansulfonsäure)'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='PFOS (Perfluoroctansulfonsäure)')].value",
+              "jsonPath": "$.by_parameter['PFOS (Perfluoroctansulfonsäure)'][*].value",
               "type": "number"
             }
           ],
@@ -1571,12 +1571,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='PFBA (Perfluorbutansäure)')].time",
+              "jsonPath": "$.by_parameter['PFBA (Perfluorbutansäure)'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='PFBA (Perfluorbutansäure)')].value",
+              "jsonPath": "$.by_parameter['PFBA (Perfluorbutansäure)'][*].value",
               "type": "number"
             }
           ],
@@ -1624,12 +1624,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='PFHxS (Perfluorhexansulfonsäure)')].time",
+              "jsonPath": "$.by_parameter['PFHxS (Perfluorhexansulfonsäure)'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='PFHxS (Perfluorhexansulfonsäure)')].value",
+              "jsonPath": "$.by_parameter['PFHxS (Perfluorhexansulfonsäure)'][*].value",
               "type": "number"
             }
           ],
@@ -1688,12 +1688,12 @@
           "fields": [
             {
               "name": "time",
-              "jsonPath": "$.data[?(@.parameter=='${parameter}')].time",
+              "jsonPath": "$.by_parameter['${parameter}'][*].time",
               "type": "time"
             },
             {
               "name": "value",
-              "jsonPath": "$.data[?(@.parameter=='${parameter}')].value",
+              "jsonPath": "$.by_parameter['${parameter}'][*].value",
               "type": "number"
             }
           ],

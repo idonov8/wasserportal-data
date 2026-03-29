@@ -136,10 +136,18 @@ def main():
         except Exception as e:
             print(f"Error fetching station {s['id']}: {e}")
             data = []
+        # Build by_parameter index: compact {time, value} arrays keyed by parameter name
+        by_parameter = {}
+        for row in data:
+            pname = row.get("parameter", "")
+            if pname not in by_parameter:
+                by_parameter[pname] = []
+            by_parameter[pname].append({"time": row["time"], "value": row["value"]})
         out_obj = {
             "station": s["id"],
             "fetched_at": datetime.utcnow().isoformat() + "Z",
             "count": len(data),
+            "by_parameter": by_parameter,
             "data": data,
         }
         out_path = os.path.join(OUT_DIR, s["filename"])
