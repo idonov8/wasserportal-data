@@ -130,7 +130,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -183,7 +188,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -236,7 +246,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -289,7 +304,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -354,7 +374,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -407,7 +432,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -460,7 +490,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -513,7 +548,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -578,7 +618,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -631,7 +676,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -684,7 +734,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -737,7 +792,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -802,7 +862,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -855,7 +920,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -908,7 +978,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -961,7 +1036,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1026,7 +1106,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1079,7 +1164,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1132,7 +1222,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1185,7 +1280,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1250,7 +1350,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1303,7 +1408,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1356,7 +1466,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1409,7 +1524,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1474,7 +1594,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1527,7 +1652,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1580,7 +1710,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1633,7 +1768,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     },
@@ -1697,7 +1837,12 @@
               "type": "number"
             }
           ],
-          "cacheDurationSeconds": 300
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
         }
       ]
     }

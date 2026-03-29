@@ -148,12 +148,11 @@ def main():
             "fetched_at": datetime.utcnow().isoformat() + "Z",
             "count": len(data),
             "by_parameter": by_parameter,
-            "data": data,
         }
         out_path = os.path.join(OUT_DIR, s["filename"])
         with open(out_path, "w", encoding="utf-8") as f:
             import json
-            json.dump(out_obj, f, ensure_ascii=False, indent=2)
+            json.dump(out_obj, f, ensure_ascii=False, separators=(",", ":"))
         index["stations"].append({
             "id": s["id"],
             "url": f"./{s['filename']}",
