@@ -14,7 +14,7 @@ STATIONS = [
     {"id": "130", "filename": "130.json"},
 ]
 
-BASE_URL = "https://wasserportal.berlin.de/station.php?anzeige=d&station={station}&thema=opq&nstoffid=448&nstoffid2=0"
+BASE_URL = "https://wasserportal.berlin.de/station.php?anzeige=d&station={station}&thema=opq&nstoffid=0&nstoffid2=0"
 
 def detect_delimiter(first_line: str):
     # prefer semicolon if present (common in German CSVs)
@@ -71,13 +71,14 @@ def parse_date(s: str):
 def fetch_station(station_id: str):
     url = BASE_URL.format(station=station_id)
     # prepare form payload with start date and today
-    payload = {
-        "sreihe": "ew",
-        "smode": "c",
-        "sdatum": "02.01.1975",
-        "senddatum": datetime.now().strftime("%d.%m.%Y"),
-        "exportthema": "pq",
-    }
+    payload = [
+        ("sreihe", "wa"),
+        ("smode", "c"),
+        ("sdatum", ""),
+        ("senddatum", ""),
+        ("exportthema", "gw"),
+        ("exportthema", "pq"),
+    ]
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
         "Origin": "https://wasserportal.berlin.de",
@@ -112,15 +113,15 @@ def fetch_station(station_id: str):
         raw_value = row.get(value_key, "").strip() if value_key else ""
         dt = parse_date(raw_date)
         if dt is None:
-            # skip rows without a valid date
             continue
         val = parse_number(raw_value)
-        # some entries may include extra info; still include nulls
         out.append({
             "time": dt.isoformat(),
+            "parameter": row.get("Parameter", "").strip(),
+            "unit": row.get("Einheit", "").strip(),
             "value": val,
             "raw_value": raw_value,
-            "raw_row": row
+            "raw_row": row,
         })
     # sort by time ascending
     out.sort(key=lambda r: r["time"])
