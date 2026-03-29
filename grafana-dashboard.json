@@ -1,0 +1,1705 @@
+{
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "marcusolsson-json-datasource",
+      "name": "JSON API",
+      "version": "0.6.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "id": null,
+  "uid": "wasserportal-berlin",
+  "title": "Wasserportal Berlin - Water Quality",
+  "description": "Water quality measurements from Berlin monitoring stations (Wasserportal Berlin)",
+  "tags": [
+    "water",
+    "berlin",
+    "environment"
+  ],
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "1h",
+  "time": {
+    "from": "now-5y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "editable": true,
+  "graphTooltip": 1,
+  "templating": {
+    "list": [
+      {
+        "name": "station",
+        "label": "Station",
+        "type": "datasource",
+        "query": "marcusolsson-json-datasource",
+        "current": {},
+        "hide": 0,
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      },
+      {
+        "name": "parameter",
+        "label": "Parameter (Custom Explorer)",
+        "type": "textbox",
+        "current": {
+          "text": "Wassertemperatur",
+          "value": "Wassertemperatur"
+        },
+        "hide": 0,
+        "options": []
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "title": "Physical Parameters (Vor-Ort)",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Water Temperature (°C)",
+      "gridPos": {
+        "x": 0,
+        "y": 1,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Water Temperature"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Wassertemperatur')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Wassertemperatur')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "pH (-)",
+      "gridPos": {
+        "x": 6,
+        "y": 1,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "pH"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='pH-Wert')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='pH-Wert')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Dissolved Oxygen (mg/l)",
+      "gridPos": {
+        "x": 12,
+        "y": 1,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Dissolved Oxygen"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Sauerstoff-Gehalt')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Sauerstoff-Gehalt')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Conductivity (µS/cm)",
+      "gridPos": {
+        "x": 18,
+        "y": 1,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Conductivity"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Leitfähigkeit')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Leitfähigkeit')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "row",
+      "title": "Nutrients (Nährstoffe)",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 9,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "Nitrate-N (mg/l)",
+      "gridPos": {
+        "x": 0,
+        "y": 10,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Nitrate-N"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Nitrat-Stickstoff')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Nitrat-Stickstoff')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "Nitrite-N (mg/l)",
+      "gridPos": {
+        "x": 6,
+        "y": 10,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Nitrite-N"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Nitrit-Stickstoff')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Nitrit-Stickstoff')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "Ammonium-N (mg/l)",
+      "gridPos": {
+        "x": 12,
+        "y": 10,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Ammonium-N"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Ammonium-Stickstoff')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Ammonium-Stickstoff')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "timeseries",
+      "title": "Total Phosphorus (mg/l)",
+      "gridPos": {
+        "x": 18,
+        "y": 10,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Total Phosphorus"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Gesamt-Phosphor (P) gesamt')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Gesamt-Phosphor (P) gesamt')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "row",
+      "title": "Ions (Anionen und Kationen)",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 18,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "Chloride (mg/l)",
+      "gridPos": {
+        "x": 0,
+        "y": 19,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Chloride"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Chlorid')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Chlorid')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "timeseries",
+      "title": "Sulfate (mg/l)",
+      "gridPos": {
+        "x": 6,
+        "y": 19,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Sulfate"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Sulfat')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Sulfat')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "timeseries",
+      "title": "Calcium (mg/l)",
+      "gridPos": {
+        "x": 12,
+        "y": 19,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Calcium"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Calcium')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Calcium')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "timeseries",
+      "title": "Sodium (mg/l)",
+      "gridPos": {
+        "x": 18,
+        "y": 19,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Sodium"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Natrium')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Natrium')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "row",
+      "title": "Heavy Metals (Metalle)",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 27,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 17,
+      "type": "timeseries",
+      "title": "Lead (µg/l)",
+      "gridPos": {
+        "x": 0,
+        "y": 28,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Lead"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Blei gesamt')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Blei gesamt')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "timeseries",
+      "title": "Cadmium (µg/l)",
+      "gridPos": {
+        "x": 6,
+        "y": 28,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Cadmium"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Cadmium gesamt')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Cadmium gesamt')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "timeseries",
+      "title": "Copper (µg/l)",
+      "gridPos": {
+        "x": 12,
+        "y": 28,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Copper"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Kupfer gesamt')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Kupfer gesamt')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "timeseries",
+      "title": "Zinc (µg/l)",
+      "gridPos": {
+        "x": 18,
+        "y": 28,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Zinc"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Zink gesamt')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Zink gesamt')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "row",
+      "title": "Organics & Microbiology",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 36,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 22,
+      "type": "timeseries",
+      "title": "DOC (mg/l)",
+      "gridPos": {
+        "x": 0,
+        "y": 37,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "DOC"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='DOC (Gelöster organischer Kohlenstoff)')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='DOC (Gelöster organischer Kohlenstoff)')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "timeseries",
+      "title": "BOD5 (mg/l)",
+      "gridPos": {
+        "x": 6,
+        "y": 37,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "BOD5"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='BSB5 (Biochem. Sauerstoffbedarf, 5d)')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='BSB5 (Biochem. Sauerstoffbedarf, 5d)')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "timeseries",
+      "title": "COD (mg/l)",
+      "gridPos": {
+        "x": 12,
+        "y": 37,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "COD"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='CSB (Chem. Sauerstoffbedarf)')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='CSB (Chem. Sauerstoffbedarf)')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "timeseries",
+      "title": "E.Coli (KBE/100ml)",
+      "gridPos": {
+        "x": 18,
+        "y": 37,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "E.Coli"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='E.Coli')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='E.Coli')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "row",
+      "title": "PAH - Polycyclic Aromatic Hydrocarbons",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 45,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 27,
+      "type": "timeseries",
+      "title": "Benzo[a]pyrene (µg/l)",
+      "gridPos": {
+        "x": 0,
+        "y": 46,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Benzo[a]pyrene"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Benzo[a]pyren')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Benzo[a]pyren')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "timeseries",
+      "title": "Fluoranthene (µg/l)",
+      "gridPos": {
+        "x": 6,
+        "y": 46,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Fluoranthene"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Fluoranthen')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Fluoranthen')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "timeseries",
+      "title": "Naphthalene (µg/l)",
+      "gridPos": {
+        "x": 12,
+        "y": 46,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Naphthalene"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Naphthalin')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Naphthalin')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "timeseries",
+      "title": "Pyrene (µg/l)",
+      "gridPos": {
+        "x": 18,
+        "y": 46,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Pyrene"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='Pyren')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='Pyren')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "row",
+      "title": "PFAS",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 54,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 32,
+      "type": "timeseries",
+      "title": "PFOA (ng/l)",
+      "gridPos": {
+        "x": 0,
+        "y": 55,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "PFOA"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='PFOA (Perfluoroctansäure)')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='PFOA (Perfluoroctansäure)')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "timeseries",
+      "title": "PFOS (ng/l)",
+      "gridPos": {
+        "x": 6,
+        "y": 55,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "PFOS"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='PFOS (Perfluoroctansulfonsäure)')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='PFOS (Perfluoroctansulfonsäure)')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "timeseries",
+      "title": "PFBA (ng/l)",
+      "gridPos": {
+        "x": 12,
+        "y": 55,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "PFBA"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='PFBA (Perfluorbutansäure)')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='PFBA (Perfluorbutansäure)')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "timeseries",
+      "title": "PFHxS (ng/l)",
+      "gridPos": {
+        "x": 18,
+        "y": 55,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "PFHxS"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='PFHxS (Perfluorhexansulfonsäure)')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='PFHxS (Perfluorhexansulfonsäure)')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "row",
+      "title": "Custom Parameter Explorer",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 63,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 37,
+      "type": "timeseries",
+      "title": "Custom: ${parameter}",
+      "gridPos": {
+        "x": 0,
+        "y": 64,
+        "w": 24,
+        "h": 10
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.data[?(@.parameter=='${parameter}')].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.data[?(@.parameter=='${parameter}')].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300
+        }
+      ]
+    }
+  ]
+}
