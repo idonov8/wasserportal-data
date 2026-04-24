@@ -1,0 +1,214 @@
+{
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "marcusolsson-json-datasource",
+      "name": "JSON API",
+      "version": "0.6.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "id": null,
+  "uid": "wasserportal-flow-5866301",
+  "title": "Wasserportal Berlin - Flow Station 5866301",
+  "description": "Flow/discharge (Durchfluss) measurements from Berlin monitoring station 5866301",
+  "tags": [
+    "water",
+    "berlin",
+    "environment",
+    "flow",
+    "discharge"
+  ],
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "1h",
+  "time": {
+    "from": "now-5y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "editable": true,
+  "graphTooltip": 1,
+  "templating": {
+    "list": [
+      {
+        "name": "station",
+        "label": "Station",
+        "type": "datasource",
+        "query": "marcusolsson-json-datasource",
+        "current": {},
+        "hide": 0,
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      },
+      {
+        "name": "parameter",
+        "label": "Parameter (Custom Explorer)",
+        "type": "textbox",
+        "current": {
+          "text": "Abfluss",
+          "value": "Abfluss"
+        },
+        "hide": 0,
+        "options": []
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "title": "Discharge (Durchfluss)",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Abfluss / Discharge (m³/s)",
+      "gridPos": {
+        "x": 0,
+        "y": 1,
+        "w": 24,
+        "h": 10
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "spanNulls": true
+          },
+          "displayName": "Abfluss (m³/s)"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.by_parameter['Abfluss'][*].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.by_parameter['Abfluss'][*].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "row",
+      "title": "Custom Parameter Explorer",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 11,
+        "w": 24,
+        "h": 1
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Custom: ${parameter}",
+      "gridPos": {
+        "x": 0,
+        "y": 12,
+        "w": 24,
+        "h": 10
+      },
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${station}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "fields": [
+            {
+              "name": "time",
+              "jsonPath": "$.by_parameter['${parameter}'][*].time",
+              "type": "time"
+            },
+            {
+              "name": "value",
+              "jsonPath": "$.by_parameter['${parameter}'][*].value",
+              "type": "number"
+            }
+          ],
+          "cacheDurationSeconds": 300,
+          "method": "GET",
+          "urlPath": "",
+          "params": [],
+          "headers": [],
+          "body": ""
+        }
+      ]
+    }
+  ]
+}
