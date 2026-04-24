@@ -10,11 +10,36 @@ OUT_DIR = "public/stations"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 STATIONS = [
-    {"id": "140", "filename": "140.json"},
-    {"id": "130", "filename": "130.json"},
+    {
+        "id": "140",
+        "filename": "140.json",
+        "url": "https://wasserportal.berlin.de/station.php?anzeige=d&station=140&thema=opq&nstoffid=0&nstoffid2=0",
+        "payload": [
+            ("sreihe", "wa"), ("smode", "c"), ("sdatum", ""), ("senddatum", ""),
+            ("exportthema", "gw"), ("exportthema", "pq"),
+        ],
+        "default_parameter": "",
+    },
+    {
+        "id": "130",
+        "filename": "130.json",
+        "url": "https://wasserportal.berlin.de/station.php?anzeige=d&station=130&thema=opq&nstoffid=0&nstoffid2=0",
+        "payload": [
+            ("sreihe", "wa"), ("smode", "c"), ("sdatum", ""), ("senddatum", ""),
+            ("exportthema", "gw"), ("exportthema", "pq"),
+        ],
+        "default_parameter": "",
+    },
+    {
+        "id": "5866301",
+        "filename": "5866301.json",
+        "url": "https://wasserportal.berlin.de/station.php?anzeige=d&station=5866301&thema=odf",
+        "payload": [
+            ("sreihe", "tw"), ("smode", "c"), ("sdatum", ""), ("senddatum", ""),
+        ],
+        "default_parameter": "Abfluss",
+    },
 ]
-
-BASE_URL = "https://wasserportal.berlin.de/station.php?anzeige=d&station={station}&thema=opq&nstoffid=0&nstoffid2=0"
 
 def detect_delimiter(first_line: str):
     # prefer semicolon if present (common in German CSVs)
@@ -68,17 +93,9 @@ def parse_date(s: str):
     except Exception:
         return None
 
-def fetch_station(station_id: str):
-    url = BASE_URL.format(station=station_id)
-    # prepare form payload with start date and today
-    payload = [
-        ("sreihe", "wa"),
-        ("smode", "c"),
-        ("sdatum", ""),
-        ("senddatum", ""),
-        ("exportthema", "gw"),
-        ("exportthema", "pq"),
-    ]
+def fetch_station(station: dict):
+    url = station["url"]
+    payload = station["payload"]
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
         "Origin": "https://wasserportal.berlin.de",
@@ -132,17 +149,18 @@ def main():
     for s in STATIONS:
         print(f"Fetching station {s['id']}...")
         try:
-            data = fetch_station(s["id"])
+            data = fetch_station(s)
         except Exception as e:
             print(f"Error fetching station {s['id']}: {e}")
             data = []
         # Build by_parameter index: compact {time, value} arrays keyed by parameter name
         by_parameter = {}
         for row in data:
-            pname = row.get("parameter", "")
+            pname = row.get("parameter", "") or s.get("default_parameter", "")
             if pname not in by_parameter:
                 by_parameter[pname] = []
             by_parameter[pname].append({"time": row["time"], "value": row["value"]})
+        print(f"  Parameters found: {list(by_parameter.keys())}")
         out_obj = {
             "station": s["id"],
             "fetched_at": datetime.utcnow().isoformat() + "Z",
