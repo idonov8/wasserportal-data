@@ -3,6 +3,7 @@
 import requests
 import csv
 import os
+import re
 from datetime import datetime
 from dateutil import parser as dateparser
 
@@ -67,6 +68,12 @@ def find_keys(header):
         value_key = header[1]
     return date_key, value_key
 
+def missing_values(header):
+    # the CSV header declares its own sentinel, e.g. "Fehlwerte: -777"
+    found = {parse_number(m.group(1)) for h in header for m in [re.search(r"Fehlwerte:\s*(-?[\d.,]+)", h)] if m}
+    return found - {None} or {-777.0}
+
+
 def parse_number(s: str):
     if s is None:
         return None
@@ -123,6 +130,7 @@ def fetch_station(station: dict):
     reader = csv.DictReader(lines, delimiter=delim)
     header = reader.fieldnames or []
     date_key, value_key = find_keys(header)
+    missing = missing_values(header)
 
     out = []
     for row in reader:
@@ -132,6 +140,8 @@ def fetch_station(station: dict):
         if dt is None:
             continue
         val = parse_number(raw_value)
+        if val in missing:
+            continue
         out.append({
             "time": dt.isoformat(),
             "parameter": row.get("Parameter", "").strip(),
