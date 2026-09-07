@@ -4,11 +4,29 @@ import requests
 import csv
 import os
 import re
+import time
 from datetime import datetime
 from dateutil import parser as dateparser
 
 OUT_DIR = "public/stations"
 os.makedirs(OUT_DIR, exist_ok=True)
+
+# Something between the runner and station.php answers with a cached CSV that
+# can be weeks stale, and the snapshot it hands back drifts backwards over
+# time: the runs on 02.09 and 05.09 both stopped at 20.08, the runs on 05.09,
+# 06.09 and 07.09 all stopped at 14.08, while the same POST from a browser
+# returned every day through 07.09. A per-run cache buster and an ordinary
+# browser User-Agent are what separate the two requests.
+BROWSER_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+)
+
+
+def cache_bust(url: str) -> str:
+    sep = "&" if "?" in url else "?"
+    return f"{url}{sep}_={int(time.time() * 1000)}"
+
 
 STATIONS = [
     {
@@ -101,13 +119,15 @@ def parse_date(s: str):
         return None
 
 def fetch_station(station: dict):
-    url = station["url"]
+    url = cache_bust(station["url"])
     payload = station["payload"]
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
         "Origin": "https://wasserportal.berlin.de",
         "Referer": "https://wasserportal.berlin.de/",
-        "User-Agent": "github-actions-fetcher/1.0",
+        "User-Agent": BROWSER_UA,
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
     }
 
     resp = requests.post(url, data=payload, headers=headers, timeout=60)
